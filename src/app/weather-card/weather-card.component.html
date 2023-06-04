@@ -1,18 +1,19 @@
-<mat-card class="card-format">
+<mat-card class="card-format" *ngIf="myWeather">
   <mat-card-header>
-    <mat-card-title>Cidade  </mat-card-title>
-    <mat-card-subtitle>Summary: Rain</mat-card-subtitle>
-    <img src="{{icon}}" alt="weather image">
+    <mat-card-title>Cidade</mat-card-title>
+    <mat-card-subtitle>Summary: </mat-card-subtitle>
+    <img [src]="'https://openweathermap.org/img/wn/' + myWeather.weather[0]?.icon + '@2x.png'" alt="Weather Icon">
   </mat-card-header>
   <mat-card-content>
-    <p>Temperature: {{temp}}</p>
-    <p>Feels Like: {{feels_like}}</p>
-    <p>Min/Max : {{temp_min}}/{{temp_max}}</p>
-    <p>Pressure: {{pressure}}</p>
-    <p>Humidity: {{humidity}}</p>
+    <p>Temperature: {{ myWeather.main?.temp }}</p>
+    <p>Feels Like: {{ myWeather.main?.feels_like }}</p>
+    <p>Min/Max: {{ myWeather.main?.temp_min }}/{{ myWeather.main?.temp_max }}</p>
+    <p>Pressure: {{ myWeather.main?.pressure }}</p>
+    <p>Humidity: {{ myWeather.main?.humidity }}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>Button 1</button>
     <button mat-button>Button 2</button>
   </mat-card-actions>
 </mat-card>
+
