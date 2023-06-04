@@ -1,11 +1,13 @@
 <mat-card class="card-format">
   <mat-card-header>
-    <mat-card-title>Cidade</mat-card-title>
+    <mat-card-title>Cidade  </mat-card-title>
     <mat-card-subtitle>Summary: Rain</mat-card-subtitle>
+    <img src="{{icon}}" alt="weather image">
   </mat-card-header>
   <mat-card-content>
-    <p>Temperature: {{temperature}}</p>
-    <p>Feels Like: {{fellsLike}}</p>
+    <p>Temperature: {{temp}}</p>
+    <p>Feels Like: {{feels_like}}</p>
+    <p>Min/Max : {{temp_min}}/{{temp_max}}</p>
     <p>Pressure: {{pressure}}</p>
     <p>Humidity: {{humidity}}</p>
   </mat-card-content>
