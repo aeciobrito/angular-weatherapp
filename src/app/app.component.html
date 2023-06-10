@@ -2,7 +2,7 @@
     <form class="form">
         <mat-form-field class="full-width">
           <mat-label>Cidade</mat-label>
-          <input [(ngModel)]="cidade" matInput #message maxlength="256" placeholder="Ex. Jundiai" name="cidade" (input)="getWeatherData()">
+          <input [(ngModel)]="cidade" matInput #message maxlength="256" placeholder="Ex. Jundiai" name="cidade" (input)="cidadeInput$.next(message.value)">
           <mat-hint align="start"><strong>Informe apenas cidades</strong> </mat-hint>
           <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
         </mat-form-field>
