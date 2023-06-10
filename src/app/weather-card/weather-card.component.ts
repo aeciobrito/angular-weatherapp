@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { OpenWeatherMapService } from '../shared/services/open-weather-map.service';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Forecast } from '../shared/models/Forecast';
 
 @Component({
@@ -7,18 +6,13 @@ import { Forecast } from '../shared/models/Forecast';
   templateUrl: './weather-card.component.html',
   styleUrls: ['./weather-card.component.scss']
 })
-export class WeatherCardComponent implements OnInit { 
-  myWeather: Forecast | undefined;
+export class WeatherCardComponent implements OnChanges {
+  @Input() weatherData: Forecast | undefined;
 
-  constructor(private weatherService: OpenWeatherMapService) {}
-
-  ngOnInit(): void {
-    this.weatherService.getWeather().subscribe({
-      next: (res) => {
-        this.myWeather = new Forecast(res);
-      },
-      error: (error) => console.log(error.message),
-      complete: () => console.info('API call completed')
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['weatherData'] && changes['weatherData'].currentValue) {
+      // Executar ações adicionais com os dados do clima
+      console.log('Dados do clima atualizados:', this.weatherData);
+    }
   }
 }
