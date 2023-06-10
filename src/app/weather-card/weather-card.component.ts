@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { OpenWeatherMapService } from '../shared/services/open-weather-map.service';
 import { Forecast } from '../shared/models/Forecast';
 
@@ -7,8 +7,7 @@ import { Forecast } from '../shared/models/Forecast';
   templateUrl: './weather-card.component.html',
   styleUrls: ['./weather-card.component.scss']
 })
-export class WeatherCardComponent implements OnInit {
-
+export class WeatherCardComponent implements OnInit { 
   myWeather: Forecast | undefined;
 
   constructor(private weatherService: OpenWeatherMapService) {}
@@ -16,7 +15,7 @@ export class WeatherCardComponent implements OnInit {
   ngOnInit(): void {
     this.weatherService.getWeather().subscribe({
       next: (res) => {
-        this.myWeather = new Forecast(res); // Instantiate the Root class
+        this.myWeather = new Forecast(res);
       },
       error: (error) => console.log(error.message),
       complete: () => console.info('API call completed')
